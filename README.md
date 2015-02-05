@@ -4,7 +4,7 @@
 
 ## Requirement
 
-* Requires [Node.js][http://nodejs.org/] >= 0.10.x (tested with v0.10.25)
+* Requires [Node.js](http://nodejs.org/) >= 0.10.x (tested with v0.10.25)
 * No Platform requirements: Win, Linux and Mac are supported
 
 ## Setup
@@ -12,7 +12,7 @@
 * clone module and install dependencies
 
 	```
-	git clone 
+	git clone <URL to this repository>
 	cd phyweb
 	npm install
 	```
@@ -33,7 +33,7 @@
 
 ## How it works?
 
- phyweb waits for SSDP `M-SEARCH` requests with type `urn:physical-web-org:device:Basic:1` from Physical-Web clients and replies with a SSDP packet for each URL. Below are the SSDP search and response SSDP packets for the example above:
+ phyweb waits for SSDP `M-SEARCH` requests with type `urn:physical-web-org:device:Basic:1` from Physical-Web clients and replies with a SSDP packet for each URL. Below are the SSDP search and response packets for the example above:
 
 * Physical-Web Client e.g. Android or iOS client sends the following SSDP `M-SEARCH` Packet:
 	
