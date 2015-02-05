@@ -1,0 +1,21 @@
+{
+    "name": "phyweb",
+    "description": "Node.js Implementation of Physical Web",
+    "version": "0.0.1",
+    "author": {
+        "name": "Louay Bassbouss",
+        "email": "louay.bassbouss@fokus.fraunhofer.de"
+    },
+    "contributors": [{
+        "name": "Martin Lasak",
+        "email": "martin.lasak@fokus.fraunhofer.de"
+    }],
+    "keywords": ["physical web","ssdp", "mdns", "uribeacon"],
+	"dependencies" : {
+		"peer-ssdp": "0.0.2"
+	},
+    "main": "phyweb",
+    "readmeFilename": "README.md",
+    "_id": "phyweb@0.0.1",
+    "_from": "phyweb@*"
+}
