@@ -12,7 +12,7 @@
     }],
     "keywords": ["physical web","ssdp", "mdns", "uribeacon"],
 	"dependencies" : {
-		"peer-ssdp": "0.0.2"
+		"peer-ssdp": "0.0.3"
 	},
     "main": "phyweb",
     "readmeFilename": "README.md",

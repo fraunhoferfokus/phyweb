@@ -18,6 +18,10 @@
  */
 //Example for USAGE: node phyweb http://www.fokus.fraunhofer.de http://www.fokus.fraunhofer.de/fame http://www.google.com http://www.fokus.fraunhofer.de/go/mws
 var urls = process.argv.slice(2);
+var timeString = function(){
+	return new Date().toTimeString().split(" ")[0];
+}
+
 if(urls.length == 0){
 	console.log("USAGE: node phyweb URL [URL2] [URL3] ...");
 	return;
@@ -37,7 +41,7 @@ var uuid = (function generateUUID() {
 })();
 var peer = ssdp.createPeer();
 process.on('SIGINT', function() {
-	console.log("*** stopping phyweb");
+	console.log(timeString(),"*** stopping phyweb");
 	for(var i in urls){
 		var url = urls[i];
 		peer.byebye({
@@ -53,7 +57,7 @@ process.on('SIGINT', function() {
 	},1000);
 });
 peer.on("ready", function () {
-    console.log("*** phyweb is ready");
+    console.log(timeString(),"*** phyweb is ready");
 	for(var i in urls){
 		var url = urls[i];
 		peer.alive({
@@ -68,21 +72,25 @@ peer.on("ready", function () {
 	if(ST != PHYSICAL_WEB_SSDP_TYPE){
 		return;
 	}
-	console.log(">>> receive request from a physical-web client",address.address);
-    for(var i in urls){
-		var url = urls[i];
-	    var headers = {
-			LOCATION: url,
-			SERVER: SERVER,
-			ST: PHYSICAL_WEB_SSDP_TYPE,
-			USN: "uuid:" + uuid + "::"+PHYSICAL_WEB_SSDP_TYPE
-		};
-		console.log("<<< send",url,"to physical-web client", address.address);
-		peer.reply(headers, address);
-	}
+	var timeout = parseInt((parseInt(headers.MX) || 0)*800*Math.random());
+	console.log(timeString(),">>> receive request from a physical-web client",address.address);
+	setTimeout(function(){
+		for(var i in urls){
+			var url = urls[i];
+			var headers = {
+				LOCATION: url,
+				SERVER: SERVER,
+				ST: PHYSICAL_WEB_SSDP_TYPE,
+				USN: "uuid:" + uuid + "::"+PHYSICAL_WEB_SSDP_TYPE
+			};
+			console.log(timeString(),"<<< send",url,"to physical-web client", address.address);
+			peer.reply(headers, address);
+		}
+	},timeout);
+    
 
 }).on("close", function () {
-    console.log("*** phyweb stopped");
+    console.log(timeString(),"*** phyweb stopped");
 }).start();
  
  
