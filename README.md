@@ -1,4 +1,4 @@
-# Node.js Pyhsical Web Advertiser
+# Node.js Physical Web Advertiser
 
 `phyweb` is a Node.js advertiser for [Physical-Web](https://github.com/google/physical-web). It supports currently advertising URLs over SSDP protocol. 
 
